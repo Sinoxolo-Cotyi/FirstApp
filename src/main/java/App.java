@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.*;
-
+import java.util.ArrayList;
 public class App {
     public static void main(String[] args) {
         staticFiles.location("/public");
-        /*get("/greet/:username", ((request, response) -> {
-            return "Molo: " + request.params(":username");
-        }));
-        post("/greet/:username", ((request, response) -> {
-            return "Hello, " + request.queryParams("username");
-        }));
-*/
+       ArrayList<String> usernames = new ArrayList<String>();
+       usernames.add("username");
+       if (usernames.contains("username")) {
+           System.out.println(usernames);
+       } else {
+           usernames.add("username");
+           System.out.println(usernames);
+       }
         get("/hello", (req, res) -> {
 
             Map<String, Object> map = new HashMap<>();

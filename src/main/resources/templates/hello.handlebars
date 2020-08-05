@@ -16,6 +16,12 @@
 </form>
 
 {{greeting}}
-
+<div>
+    <ul>
+        {{#each users}}
+        <li>{{this}}</li>
+        {{/each}}
+     </ul>
+</div>
 </body>
 </html>
