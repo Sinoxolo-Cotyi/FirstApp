@@ -9,8 +9,15 @@
 </head>
 <body>
 <h1>Greet me</h1>
-
+{{number}}
 <form action="/hello" method="post" >
+    <p>Please select language:<p>
+    <input type="radio" id="English" name="Language" value="English">
+    <label for="English">English</label><br>
+    <input type="radio" id="IsiXhosa" name="Language" value="IsiXhosa">
+    <label for="IsiXhosa">IsiXhosa</label><br>
+    <input type="radio" id="French" name="Language" value="French">
+    <label for="French">French</label><br>
     <input type="text" name="username">
     <input type="submit" >
 </form>
@@ -23,5 +30,7 @@
         {{/each}}
      </ul>
 </div>
+
+<h1>{{user}}</h1>
 </body>
 </html>
