@@ -1,8 +1,12 @@
 package net.webapp;
 
+import org.w3c.dom.ls.LSOutput;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
@@ -20,7 +24,6 @@ public class App {
         port(getHerokuAssignedPort());
         staticFiles.location("/public");
         List<String> namesList = new ArrayList<>();
-        List<Person> allUsers = new ArrayList<>();
 
         //Copy all items from list 1 to list 2
         ArrayList<String> usernames = new ArrayList<String>(namesList);
@@ -29,11 +32,6 @@ public class App {
             Map<String, Object> map = new HashMap<>();
             return new ModelAndView(map, "hello.handlebars");
 
-        }, new HandlebarsTemplateEngine());
-        get("/greeted/:username",(req, res)->{
-            Map<String,Object> data = new HashMap<>();
-            data.put("user",0);
-            return new ModelAndView(data,"hello.handlebars");
         }, new HandlebarsTemplateEngine());
         post("/hello", (req, res) -> {
 
@@ -71,22 +69,3 @@ public class App {
 
     }
 }
-class Person{
-    private String name;
-    private int count;
-
-
-    Person(String name, int count) {
-        this.name = name;
-        this.count = count;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getCount() {
-        return count;
-    }
-}
-
