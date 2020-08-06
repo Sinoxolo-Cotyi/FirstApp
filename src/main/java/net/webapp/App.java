@@ -1,3 +1,5 @@
+package net.webapp;
+
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
