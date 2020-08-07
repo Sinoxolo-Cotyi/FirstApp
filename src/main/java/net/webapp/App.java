@@ -1,13 +1,8 @@
-
 package net.webapp;
 
-import org.w3c.dom.ls.LSOutput;
+
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
