@@ -1,6 +1,8 @@
 package net.webapp;
 
 
+import org.jdbi.v3.core.Handle;
+import org.jdbi.v3.core.Jdbi;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import java.util.*;
@@ -17,6 +19,17 @@ public class App {
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
     public static void main(String[] args) {
+        String dbDiskURL = "jdbc:h2:file:./greetdb";
+        //     String dbMemoryURL = "jdbc:h2:mem:greetdb";
+
+        Jdbi jdbi = Jdbi.create(dbDiskURL, "sa", "");
+
+        // get a handle to the database
+        Handle handle = jdbi.open();
+        // create the table if needed
+        handle.execute("create table if not exists greet ( id integer identity, name varchar(50), counter int )");
+
+
         port(getHerokuAssignedPort());
         staticFiles.location("/public");
         List<String> namesList = new ArrayList<>();
@@ -47,6 +60,7 @@ public class App {
                 case "French" :
                     greeting = "Bonjour, " + username;
                     break;
+                default: greeting = "Please select a language!!!";
             }
             if (!usernames.contains(username)) {
                 usernames.add(username);
